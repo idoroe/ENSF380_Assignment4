@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import reviews from '../data/reviews';
 
 function HomeMainSection() {
   const [randomNewReviews, setRandomNewReviews] = useState([]);
-  const [trigger, setTrigger] = useState(0); // A state to trigger useEffect
+  const [trigger] = useState(0); 
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const generateRandomIndices = () => {
@@ -23,11 +26,16 @@ function HomeMainSection() {
     selectRandomReviews();
   }, [trigger]); 
 
+  // function to navigate to the products page using useNavigate hook
+  const navigateToProducts = () => {
+    navigate('/products');
+  };
+
   return (
     <div className="main-section">
       <h1>About Us</h1>
       <p>Welcome to our online store! We are passionate about providing high-quality products and exceptional customer service. Learn more about our story and commitment to your satisfaction.</p>
-      <button onClick={() => setTrigger(prev => prev + 1)}>Shop Now</button>
+      <button onClick={navigateToProducts}>Shop Now</button>
       
       <h2>Customer Reviews</h2>
       {randomNewReviews.map((review, index) => (

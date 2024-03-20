@@ -1,0 +1,17 @@
+
+.brand-name{
+    display: flex;
+    float: right;
+}
+.brand-name{
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+}
+
+.nav-links {
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%;
+    margin-top: 20px;
+  }
