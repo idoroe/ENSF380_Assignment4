@@ -5,22 +5,22 @@ import Cart from './Cart';
 import Footer from './Footer';
 
 const ProductPage = () => {
-  const [cart, setCart] = useState([]);
+    //this will initialize the cart with what is saved in localstorage.
+    const [cart, setCart] = useState(() => {
+      const savedCart = JSON.parse(localStorage.getItem('cart'));
+      return Array.isArray(savedCart) ? savedCart : [];
+    });
+  
+    useEffect(() => {
+      // Save cart data to local storage whenever it changes
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart'));
-    if (savedCart) {
-      setCart(savedCart);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  
 
   const addToCart = (product) => {
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
+    const existingItem = cart.find(item => item.id === product.id); //checks if item is in cart already
+    if (existingItem) { //if it is it adds 1 to quantity
       setCart(cart.map(item =>
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       ));
@@ -29,7 +29,7 @@ const ProductPage = () => {
     }
   }
 
-  const removeFromCart = (product) => {
+  const removeFromCart = (product) => { 
     const updatedCart = cart.map(item =>
       item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
     ).filter(item => item.quantity > 0);
@@ -41,8 +41,8 @@ const ProductPage = () => {
       <Header />
       <table>
         <tr>
-          <td><ProductList addToCart={addToCart} /></td>
-          <td style={{ verticalAlign: 'top' }}><Cart cart={cart} removeFromCart={removeFromCart} /></td>
+          <td ><ProductList addToCart={addToCart} /></td>
+          <td style={{ verticalAlign: 'top',}}><Cart cart={cart} removeFromCart={removeFromCart} /></td> 
         </tr>
       </table>
       <Footer />
