@@ -11,7 +11,7 @@ const Cart = ({ cart, removeFromCart }) => {
         {cart && cart.map((item, index) => (
           <CartItem key={index} item={item} removeFromCart={removeFromCart} />
         ))}
-        <h3>Total (in cart): ${totalPrice}</h3>
+        <p>Total (in cart): ${totalPrice}</p>
       </div>
     );
   }

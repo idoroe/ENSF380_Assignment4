@@ -7,7 +7,7 @@ const CartItem = ({ item, removeFromCart }) => {
       <h3>{item.name}</h3>
       <p>Price: ${item.price}</p>
       <p>Quantity: {item.quantity}</p>
-      <p>Total (in cart): ${item.quantity * item.price}</p>
+      <p>Total: ${item.quantity * item.price}</p>
       <button onClick={() => removeFromCart(item)}>Remove</button>
     </div>
   );
