@@ -13,9 +13,9 @@ const ProductItem = ({ product, addToCart }) => {
 
   return (
     <div className="product-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <img src={product.image} alt={product.name} />
+      <img src={product.image} alt={product.name} style={{width: '500px'}} />
       <h3>{product.name}</h3>
-      <p>{product.price}</p>
+      <p>Price: ${product.price}</p>
       <button onClick={() => addToCart(product)}>Add to Cart</button>
       {showDetails && <p>{product.description}</p>}
     </div>

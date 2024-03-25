@@ -6,12 +6,12 @@ const Cart = ({ cart, removeFromCart }) => {
     const totalPrice = cart ? cart.reduce((total, item) => total + item.price * item.quantity, 0) : 0;
   
     return (
-      <div className="cart">
-        <h2>Cart</h2>
+      <div className="cart" >
+        <h2>Shopping Cart</h2>
         {cart && cart.map((item, index) => (
           <CartItem key={index} item={item} removeFromCart={removeFromCart} />
         ))}
-        <h3>Total Price: {totalPrice}</h3>
+        <h3>Total (in cart): ${totalPrice}</h3>
       </div>
     );
   }
