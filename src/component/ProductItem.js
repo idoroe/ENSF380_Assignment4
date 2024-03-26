@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const ProductItem = ({ product, addToCart }) => {
   const [showDetails, setShowDetails] = useState(false);
-
+//when on the product, descriptoion pops down, and when not on it pops up
   const handleMouseEnter = () => {
     setShowDetails(true);
   }

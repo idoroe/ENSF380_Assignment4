@@ -35,7 +35,7 @@ const ProductPage = () => {
     ).filter(item => item.quantity > 0);
     setCart(updatedCart);
   }
-
+//was unsure how to implement addToCart and remove from cart without putting it in <td>
   return (
     <div className="product-page">
       <Header />
